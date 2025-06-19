@@ -15,4 +15,9 @@ test('get started link', async ({ page }) => {
 
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+  await page.goto('https://workshop-saucedemo.vercel.app/login');
+  await page.getByTestId('username').click();
+  await page.getByTestId('username').fill('wisanu');
+  await page.getByTestId('password').click();
+  await page.getByTestId('password').fill('123456');
 });
