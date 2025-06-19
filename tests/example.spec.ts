@@ -27,6 +27,9 @@ test('User can login web browser', async ({ page }) => {
   await page.goto('https://workshop-saucedemo.vercel.app/login');
   await page.getByTestId('username').click();
   await page.getByTestId('username').fill('standard_user');
+
+  await page.screenshot({ path: 'wisanu/screenshot.png',fullPage: true }); // Take a screenshot for debugging
+
   await page.getByTestId('password').click();
   await page.getByTestId('password').fill('secret_sauce');
   await page.getByTestId('login-button').click();
