@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
-
+const baseURL = 'https://www.saucedemo.com/';
 // User Login Tests
 test.describe('User Login Tests', () => {
     test('User can login website ', async ({ page }) => {
-        await page.goto('https://www.saucedemo.com/');
+        await page.goto(baseURL);
         await page.locator('[data-test="login-container"] div').filter({ hasText: 'Login' }).first().click();
         await page.locator('[data-test="username"]').click();
         await page.locator('[data-test="username"]').fill('standard_user');
@@ -15,7 +15,7 @@ test.describe('User Login Tests', () => {
     });
 
     test('User login with username wrong ', async ({ page }) => {
-        await page.goto('https://www.saucedemo.com/');
+        await page.goto(baseURL);
         expect(page.getByText('Swag Labs')).toBeVisible();
         await page.locator('[data-test="username"]').click();
         await page.locator('[data-test="username"]').fill('Wisanu');
@@ -26,7 +26,7 @@ test.describe('User Login Tests', () => {
     });
 
     test('User login with password wrong', async ({ page }) => {
-        await page.goto('https://www.saucedemo.com/');
+        await page.goto(baseURL);
         expect(page.getByText('Swag Labs')).toBeVisible();
         await page.locator('[data-test="login-container"] div').filter({ hasText: 'Login' }).first().click();
         await page.locator('[data-test="username"]').click();
