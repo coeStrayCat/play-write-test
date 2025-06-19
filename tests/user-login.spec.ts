@@ -7,5 +7,10 @@ test('User can login web browser', async ({ page }) => {
   await page.getByTestId('password').click();
   await page.getByTestId('password').fill('secret_sauce');
   await page.getByTestId('login-button').click();
-  await page.getByTestId('page-title').click();
+
+  // Verify successful login by checking the presence of the page title ได้ 3 แบบ
+  await expect(page.getByTestId('page-title')).toBeVisible();
+  await expect(page.getByTestId('page-title')).toHaveText('Products');
+  await expect(page.getByTestId('page-title')).toContainText('P');
+    
 });
